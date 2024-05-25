@@ -1,0 +1,138 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3noif3g8y380"]
+
+[ext_resource type="Script" path="res://Graph.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://doa5o2xp246a2" path="res://Images/WhitePixel.png" id="2_hh65j"]
+[ext_resource type="PackedScene" uid="uid://dx71yarhfshyj" path="res://LineGraph.tscn" id="3_88xem"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tplnv"]
+size = Vector2(1, 0.999992)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddkya"]
+size = Vector2(0.5, 0.5)
+
+[node name="Graph" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Border" type="Sprite2D" parent="."]
+modulate = Color(0.294118, 0.294118, 0.294118, 1)
+texture = ExtResource("2_hh65j")
+
+[node name="Board" type="Sprite2D" parent="."]
+texture = ExtResource("2_hh65j")
+
+[node name="Area2D" type="Area2D" parent="Board"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Area2D"]
+shape = SubResource("RectangleShape2D_tplnv")
+
+[node name="LineGraph" parent="." instance=ExtResource("3_88xem")]
+
+[node name="ResizeHandles" type="Node2D" parent="."]
+visible = false
+
+[node name="TL" type="Sprite2D" parent="ResizeHandles"]
+modulate = Color(0.101961, 0.45098, 0.909804, 1)
+scale = Vector2(10, 10)
+texture = ExtResource("2_hh65j")
+
+[node name="Area2D" type="Area2D" parent="ResizeHandles/TL"]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ResizeHandles/TL/Area2D"]
+shape = SubResource("RectangleShape2D_ddkya")
+
+[node name="TM" type="Sprite2D" parent="ResizeHandles"]
+modulate = Color(0.101961, 0.45098, 0.909804, 1)
+scale = Vector2(10, 10)
+texture = ExtResource("2_hh65j")
+
+[node name="Area2D" type="Area2D" parent="ResizeHandles/TM"]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ResizeHandles/TM/Area2D"]
+shape = SubResource("RectangleShape2D_ddkya")
+
+[node name="TR" type="Sprite2D" parent="ResizeHandles"]
+modulate = Color(0.101961, 0.45098, 0.909804, 1)
+scale = Vector2(10, 10)
+texture = ExtResource("2_hh65j")
+
+[node name="Area2D" type="Area2D" parent="ResizeHandles/TR"]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ResizeHandles/TR/Area2D"]
+shape = SubResource("RectangleShape2D_ddkya")
+
+[node name="BL" type="Sprite2D" parent="ResizeHandles"]
+modulate = Color(0.101961, 0.45098, 0.909804, 1)
+scale = Vector2(10, 10)
+texture = ExtResource("2_hh65j")
+
+[node name="Area2D" type="Area2D" parent="ResizeHandles/BL"]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ResizeHandles/BL/Area2D"]
+shape = SubResource("RectangleShape2D_ddkya")
+
+[node name="BM" type="Sprite2D" parent="ResizeHandles"]
+modulate = Color(0.101961, 0.45098, 0.909804, 1)
+scale = Vector2(10, 10)
+texture = ExtResource("2_hh65j")
+
+[node name="Area2D" type="Area2D" parent="ResizeHandles/BM"]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ResizeHandles/BM/Area2D"]
+shape = SubResource("RectangleShape2D_ddkya")
+
+[node name="BR" type="Sprite2D" parent="ResizeHandles"]
+modulate = Color(0.101961, 0.45098, 0.909804, 1)
+scale = Vector2(10, 10)
+texture = ExtResource("2_hh65j")
+
+[node name="Area2D" type="Area2D" parent="ResizeHandles/BR"]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ResizeHandles/BR/Area2D"]
+shape = SubResource("RectangleShape2D_ddkya")
+
+[node name="LM" type="Sprite2D" parent="ResizeHandles"]
+modulate = Color(0.101961, 0.45098, 0.909804, 1)
+scale = Vector2(10, 10)
+texture = ExtResource("2_hh65j")
+
+[node name="Area2D" type="Area2D" parent="ResizeHandles/LM"]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ResizeHandles/LM/Area2D"]
+shape = SubResource("RectangleShape2D_ddkya")
+
+[node name="RM" type="Sprite2D" parent="ResizeHandles"]
+modulate = Color(0.101961, 0.45098, 0.909804, 1)
+scale = Vector2(10, 10)
+texture = ExtResource("2_hh65j")
+
+[node name="Area2D" type="Area2D" parent="ResizeHandles/RM"]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ResizeHandles/RM/Area2D"]
+shape = SubResource("RectangleShape2D_ddkya")
+
+[connection signal="input_event" from="Board/Area2D" to="." method="_on_BoardArea2D_input_event"]
+[connection signal="mouse_exited" from="Board/Area2D" to="." method="_on_BoardArea2D_mouse_exited"]
+[connection signal="input_event" from="ResizeHandles/TL/Area2D" to="." method="_on_TL_input_event"]
+[connection signal="mouse_exited" from="ResizeHandles/TL/Area2D" to="." method="_on_TL_mouse_exited"]
+[connection signal="input_event" from="ResizeHandles/TM/Area2D" to="." method="_on_TM_input_event"]
+[connection signal="mouse_exited" from="ResizeHandles/TM/Area2D" to="." method="_on_TM_mouse_exited"]
+[connection signal="input_event" from="ResizeHandles/TR/Area2D" to="." method="_on_TR_input_event"]
+[connection signal="mouse_exited" from="ResizeHandles/TR/Area2D" to="." method="_on_TR_mouse_exited"]
+[connection signal="input_event" from="ResizeHandles/BL/Area2D" to="." method="_on_BL_input_event"]
+[connection signal="mouse_exited" from="ResizeHandles/BL/Area2D" to="." method="_on_BL_mouse_exited"]
+[connection signal="input_event" from="ResizeHandles/BM/Area2D" to="." method="_on_BM_input_event"]
+[connection signal="mouse_exited" from="ResizeHandles/BM/Area2D" to="." method="_on_BM_mouse_exited"]
+[connection signal="input_event" from="ResizeHandles/BR/Area2D" to="." method="_on_BR_input_event"]
+[connection signal="mouse_exited" from="ResizeHandles/BR/Area2D" to="." method="_on_BR_mouse_exited"]
+[connection signal="input_event" from="ResizeHandles/LM/Area2D" to="." method="_on_LM_input_event"]
+[connection signal="mouse_exited" from="ResizeHandles/LM/Area2D" to="." method="_on_LM_mouse_exited"]
+[connection signal="input_event" from="ResizeHandles/RM/Area2D" to="." method="_on_RM_input_event"]
+[connection signal="mouse_exited" from="ResizeHandles/RM/Area2D" to="." method="_on_RM_mouse_exited"]

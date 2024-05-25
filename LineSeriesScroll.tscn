@@ -1,0 +1,423 @@
+[gd_scene load_steps=10 format=3 uid="uid://5nn2ixfugnk3"]
+
+[ext_resource type="Theme" uid="uid://de3cpifuxp4xd" path="res://Panel-theme.tres" id="1_20bhb"]
+[ext_resource type="Theme" uid="uid://4ilms8b1i68v" path="res://Headers.tres" id="2_pubc5"]
+[ext_resource type="Script" path="res://LineSeriesScroll.gd" id="2_vt0db"]
+[ext_resource type="FontFile" uid="uid://c2xeh2sqkhkrv" path="res://Fonts/DroidSans-Bold.ttf" id="3_1fc4r"]
+[ext_resource type="FontFile" uid="uid://c0tqq1uy6hdbg" path="res://Fonts/DroidSans.ttf" id="4_fh5a7"]
+[ext_resource type="Texture2D" uid="uid://mw24w3fgl2c" path="res://Images/Icons/folder.png" id="5_77ipd"]
+[ext_resource type="Texture2D" uid="uid://c7nnafa3gml6f" path="res://Images/Icons/folder-pressed.png" id="6_cghmn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wuj6s"]
+bg_color = Color(0.258824, 0.290196, 0.352941, 1)
+border_width_left = 4
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.257813, 0.289063, 0.351563, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1eiye"]
+bg_color = Color(0.337255, 0.364706, 0.427451, 1)
+
+[node name="LineSeriesScroll" type="ScrollContainer"]
+offset_right = 492.0
+offset_bottom = 713.0
+size_flags_vertical = 3
+mouse_force_pass_scroll_events = false
+theme = ExtResource("1_20bhb")
+theme_override_styles/panel = SubResource("StyleBoxFlat_wuj6s")
+script = ExtResource("2_vt0db")
+
+[node name="Row" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Separator0" type="Control" parent="Row"]
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="Row"]
+layout_mode = 2
+theme = ExtResource("2_pubc5")
+theme_override_fonts/normal_font = ExtResource("3_1fc4r")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[center]Series (LineGraph)[/center]"
+fit_content = true
+
+[node name="Smooth" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/Smooth"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_fh5a7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1eiye")
+text = "Smooth"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="CheckBox" type="CheckBox" parent="Row/Smooth"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "On"
+
+[node name="IgnoreVoidValues" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/IgnoreVoidValues"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_fh5a7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1eiye")
+text = "Ignore Void Values"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="CheckBox" type="CheckBox" parent="Row/IgnoreVoidValues"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "On"
+
+[node name="ScaleBreak" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/ScaleBreak"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_fh5a7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1eiye")
+text = "Scale Break (maybe)"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="CheckBox" type="CheckBox" parent="Row/ScaleBreak"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "On"
+
+[node name="Trendline" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/Trendline"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_fh5a7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1eiye")
+text = "Trendline"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="CheckBox" type="CheckBox" parent="Row/Trendline"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "On"
+
+[node name="ShowLabels" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/ShowLabels"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_fh5a7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1eiye")
+text = "Show Labels"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="CheckBox" type="CheckBox" parent="Row/ShowLabels"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "On"
+
+[node name="DisplayValues" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/DisplayValues"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_fh5a7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1eiye")
+text = "Display Values"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="CheckBox" type="CheckBox" parent="Row/DisplayValues"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "On"
+
+[node name="Separator1" type="Control" parent="Row"]
+layout_mode = 2
+
+[node name="Header" type="RichTextLabel" parent="Row"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme = ExtResource("2_pubc5")
+theme_override_fonts/normal_font = ExtResource("3_1fc4r")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1eiye")
+bbcode_enabled = true
+text = "[center] Line [/center]"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="Colour" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/Colour"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_fh5a7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1eiye")
+text = "Colour"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Row/Colour"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Weight" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/Weight"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_fh5a7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1eiye")
+text = "Weight
+"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="SpinBox" type="SpinBox" parent="Row/Weight"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_20bhb")
+
+[node name="Separator2" type="Control" parent="Row"]
+layout_mode = 2
+
+[node name="Header2" type="RichTextLabel" parent="Row"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme = ExtResource("2_pubc5")
+theme_override_fonts/normal_font = ExtResource("3_1fc4r")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1eiye")
+bbcode_enabled = true
+text = "[center] Points [/center]"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="Draw" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/Draw"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_fh5a7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1eiye")
+text = "Draw
+"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="CheckBox" type="CheckBox" parent="Row/Draw"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "On"
+
+[node name="Size" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/Size"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_fh5a7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1eiye")
+text = "Size"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="SpinBox" type="SpinBox" parent="Row/Size"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_20bhb")
+
+[node name="PointsColour" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/PointsColour"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_fh5a7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1eiye")
+text = "Size"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Row/PointsColour"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Separator3" type="Control" parent="Row"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+
+[node name="CustomPoint" type="VBoxContainer" parent="Row/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 6
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/HBoxContainer/CustomPoint"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_1fc4r")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1eiye")
+text = "Custom Point"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="Separator" type="Control" parent="Row/HBoxContainer/CustomPoint"]
+layout_mode = 2
+
+[node name="Weight" type="HBoxContainer" parent="Row/HBoxContainer/CustomPoint"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/HBoxContainer/CustomPoint/Weight"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_fh5a7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1eiye")
+text = "Texture"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="LineEdit" type="LineEdit" parent="Row/HBoxContainer/CustomPoint/Weight"]
+layout_mode = 2
+size_flags_horizontal = 3
+select_all_on_focus = true
+
+[node name="TextureButton" type="TextureButton" parent="Row/HBoxContainer/CustomPoint/Weight"]
+modulate = Color(0.85098, 0.85098, 0.85098, 1)
+layout_mode = 2
+texture_normal = ExtResource("5_77ipd")
+texture_pressed = ExtResource("6_cghmn")
+
+[node name="Scale" type="HBoxContainer" parent="Row/HBoxContainer/CustomPoint"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/HBoxContainer/CustomPoint/Scale"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_fh5a7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1eiye")
+text = "Scale
+"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="SpinBox" type="SpinBox" parent="Row/HBoxContainer/CustomPoint/Scale"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_20bhb")
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Row/HBoxContainer/CustomPoint"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_fh5a7")
+text = "Colour"
+
+[node name="CheckBox" type="CheckBox" parent="Row/HBoxContainer"]
+layout_mode = 2
+text = "On"

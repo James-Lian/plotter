@@ -1,0 +1,88 @@
+[gd_scene load_steps=11 format=3 uid="uid://tsodr7cxi12g"]
+
+[ext_resource type="Script" path="res://Workspace.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://d3noif3g8y380" path="res://Graph.tscn" id="2_kgo0s"]
+[ext_resource type="PackedScene" uid="uid://oxj3mnllfedr" path="res://spreadsheet.tscn" id="2_nkah7"]
+[ext_resource type="PackedScene" path="res://InputMenu.tscn" id="4"]
+[ext_resource type="Texture2D" uid="uid://bggml83s5j70e" path="res://Images/Icons/minus-circle.svg" id="8_v5skk"]
+[ext_resource type="Texture2D" uid="uid://32xlh00n012f" path="res://Images/Icons/minus-circle1.svg" id="9_k1glm"]
+[ext_resource type="Texture2D" uid="uid://2cnjelbd7em1" path="res://Images/Icons/plus-circle.svg" id="10_x07by"]
+[ext_resource type="Texture2D" uid="uid://kdf6fp8i6gie" path="res://Images/Icons/plus-circle1.svg" id="11_bihk8"]
+[ext_resource type="Texture2D" uid="uid://la3jkyyh1wcw" path="res://Images/Icons/rotate-ccw.svg" id="12_2a6h4"]
+[ext_resource type="Texture2D" uid="uid://b7xtkl4fualj1" path="res://Images/Icons/rotate-ccw1.svg" id="13_n3qy5"]
+
+[node name="Workspace" type="Node2D"]
+script = ExtResource("2")
+
+[node name="Graph" parent="." instance=ExtResource("2_kgo0s")]
+
+[node name="Spreadsheet" parent="Graph" instance=ExtResource("2_nkah7")]
+
+[node name="Panel" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_right = 120.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(120, 26)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Minus" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("8_v5skk")
+texture_pressed = ExtResource("8_v5skk")
+texture_hover = ExtResource("9_k1glm")
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "%"
+
+[node name="Plus" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("10_x07by")
+texture_pressed = ExtResource("10_x07by")
+texture_hover = ExtResource("11_bihk8")
+
+[node name="Reset" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("12_2a6h4")
+texture_pressed = ExtResource("12_2a6h4")
+texture_hover = ExtResource("13_n3qy5")
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="InputMenu" parent="GUI" instance=ExtResource("4")]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(676, 324)
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/Minus" to="." method="_on_minus_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/Plus" to="." method="_on_plus_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/Reset" to="." method="_on_reset_pressed"]
+
+[editable path="Graph"]

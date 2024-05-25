@@ -1,0 +1,127 @@
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://de3cpifuxp4xd"]
+
+[ext_resource type="FontFile" uid="uid://c0tqq1uy6hdbg" path="res://Fonts/DroidSans.ttf" id="1"]
+
+[sub_resource type="StyleBoxFlat" id="11"]
+content_margin_left = 12.0
+bg_color = Color(0.211765, 0.239216, 0.290196, 1)
+border_width_left = 2
+border_color = Color(0.324219, 0.546875, 0.996094, 1)
+
+[sub_resource type="StyleBoxFlat" id="13"]
+bg_color = Color(0.0980392, 0.117647, 0.145098, 1)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="14"]
+bg_color = Color(0.168627, 0.192157, 0.239216, 1)
+border_width_right = 8
+border_color = Color(0.0980392, 0.113725, 0.133333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgnpw"]
+bg_color = Color(0.183594, 0.199219, 0.222656, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.320313, 0.359375, 0.433594, 1)
+shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nhdac"]
+bg_color = Color(0.32549, 0.54902, 1, 1)
+border_width_left = 12
+border_width_right = 12
+border_color = Color(0.32549, 0.54902, 1, 1)
+corner_radius_top_left = 2
+corner_radius_bottom_right = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tnyla"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 12
+border_width_right = 12
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="FontFile" id="15"]
+fallbacks = Array[Font]([ExtResource("1")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/23/0 = Vector2(0, 0)
+cache/0/23/0/ascent = 0.0
+cache/0/23/0/descent = 0.0
+cache/0/23/0/underline_position = 0.0
+cache/0/23/0/underline_thickness = 0.0
+cache/0/23/0/scale = 1.0
+cache/0/23/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/23/0/kerning_overrides/23/0 = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="16"]
+bg_color = Color(0.32549, 0.54902, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bybsw"]
+bg_color = Color(0.32549, 0.54902, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+expand_margin_left = 12.0
+expand_margin_right = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70txr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 12
+border_width_right = 12
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r3dme"]
+bg_color = Color(0.257813, 0.289063, 0.351563, 1)
+
+[sub_resource type="StyleBoxFlat" id="8"]
+bg_color = Color(0.439216, 0.45098, 0.490196, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="9"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="10"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="7"]
+bg_color = Color(0.219608, 0.239216, 0.294118, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.219608, 0.239216, 0.294118, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[resource]
+LineEdit/styles/normal = SubResource("11")
+Panel/styles/panel = SubResource("13")
+PanelContainer/styles/panel = SubResource("14")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_lgnpw")
+TabBar/styles/tab_selected = SubResource("StyleBoxFlat_nhdac")
+TabBar/styles/tab_unselected = SubResource("StyleBoxFlat_tnyla")
+TabContainer/constants/side_margin = 40
+TabContainer/fonts/font = SubResource("15")
+TabContainer/styles/panel = SubResource("16")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_bybsw")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_70txr")
+Tree/constants/v_separation = 8
+Tree/styles/panel = SubResource("StyleBoxFlat_r3dme")
+VScrollBar/styles/grabber = SubResource("8")
+VScrollBar/styles/grabber_highlight = SubResource("9")
+VScrollBar/styles/grabber_pressed = SubResource("10")
+VScrollBar/styles/scroll = SubResource("7")

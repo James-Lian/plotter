@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://bwsjdfsnypw3"]
+
+[ext_resource type="Script" path="res://WorkingArea.gd" id="1_l5v1q"]
+[ext_resource type="PackedScene" uid="uid://d3noif3g8y380" path="res://Graph.tscn" id="2_rdrh0"]
+[ext_resource type="Texture2D" uid="uid://bggml83s5j70e" path="res://Images/Icons/minus-circle.svg" id="3_5aiso"]
+[ext_resource type="Texture2D" uid="uid://32xlh00n012f" path="res://Images/Icons/minus-circle1.svg" id="4_20i8w"]
+[ext_resource type="Texture2D" uid="uid://2cnjelbd7em1" path="res://Images/Icons/plus-circle.svg" id="5_pko6f"]
+[ext_resource type="Texture2D" uid="uid://kdf6fp8i6gie" path="res://Images/Icons/plus-circle1.svg" id="6_16o8g"]
+[ext_resource type="Texture2D" uid="uid://la3jkyyh1wcw" path="res://Images/Icons/rotate-ccw.svg" id="7_h5smv"]
+[ext_resource type="Texture2D" uid="uid://b7xtkl4fualj1" path="res://Images/Icons/rotate-ccw1.svg" id="8_v7pxw"]
+
+[node name="WorkingArea" type="Node2D"]
+script = ExtResource("1_l5v1q")
+
+[node name="Graphs" type="Node2D" parent="."]
+
+[node name="Graph" parent="Graphs" instance=ExtResource("2_rdrh0")]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/MarginContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Control" type="Control" parent="HUD/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="HUD/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HUD/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer/VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(120, 26)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Minus" type="TextureButton" parent="HUD/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("3_5aiso")
+texture_pressed = ExtResource("3_5aiso")
+texture_hover = ExtResource("4_20i8w")
+
+[node name="Label" type="Label" parent="HUD/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "%"
+
+[node name="Plus" type="TextureButton" parent="HUD/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("5_pko6f")
+texture_pressed = ExtResource("5_pko6f")
+texture_hover = ExtResource("6_16o8g")
+
+[node name="Reset" type="TextureButton" parent="HUD/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("7_h5smv")
+texture_pressed = ExtResource("7_h5smv")
+texture_hover = ExtResource("8_v7pxw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(676, 324)
+
+[connection signal="child_entered_tree" from="Graphs" to="." method="_on_graphs_child_entered_tree"]
+[connection signal="child_exiting_tree" from="Graphs" to="." method="_on_graphs_child_exiting_tree"]
+[connection signal="pressed" from="HUD/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/Minus" to="." method="_on_minus_pressed"]
+[connection signal="pressed" from="HUD/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/Plus" to="." method="_on_plus_pressed"]
+[connection signal="pressed" from="HUD/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/Reset" to="." method="_on_reset_pressed"]

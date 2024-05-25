@@ -1,0 +1,158 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqfe0mur51hpq"]
+
+[ext_resource type="Script" path="res://Editor.gd" id="1_dhaty"]
+[ext_resource type="Theme" uid="uid://de3cpifuxp4xd" path="res://Panel-theme.tres" id="1_sj6we"]
+[ext_resource type="FontFile" uid="uid://c2xeh2sqkhkrv" path="res://Fonts/DroidSans-Bold.ttf" id="2_mekjn"]
+[ext_resource type="PackedScene" uid="uid://co8g04taui3jx" path="res://Welcome.tscn" id="3_k6vi7"]
+[ext_resource type="PackedScene" uid="uid://d21kyca5l5i1c" path="res://WelcomeScroll.tscn" id="5_tcd47"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhr6h"]
+bg_color = Color(0.168627, 0.192157, 0.239216, 1)
+border_width_left = 8
+border_color = Color(0.0980392, 0.113725, 0.133333, 1)
+
+[node name="Editor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dhaty")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0.321569, 0.360784, 0.435294, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="V" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuBar" type="MenuBar" parent="V"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+
+[node name="File" type="PopupMenu" parent="V/MenuBar"]
+theme = ExtResource("1_sj6we")
+item_count = 4
+item_0/text = "New File"
+item_0/id = 0
+item_1/text = "Save Image"
+item_1/id = 1
+item_2/text = ""
+item_2/id = 2
+item_2/separator = true
+item_3/text = "Open Welcome"
+item_3/id = 3
+
+[node name="H" type="HBoxContainer" parent="V"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LeftPanel" type="PanelContainer" parent="V/H"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+mouse_force_pass_scroll_events = false
+theme = ExtResource("1_sj6we")
+
+[node name="MarginContainer" type="MarginContainer" parent="V/H/LeftPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="V/H/LeftPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="V/H/LeftPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="V/H/LeftPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(30, 40)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_mekjn")
+theme_override_font_sizes/normal_font_size = 20
+text = "Workspace"
+scroll_active = false
+
+[node name="Tree" type="Tree" parent="V/H/LeftPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_sj6we")
+theme_override_colors/relationship_line_color = Color(0.486275, 0.486275, 0.486275, 1)
+theme_override_colors/parent_hl_line_color = Color(0.717647, 0.717647, 0.717647, 1)
+theme_override_colors/children_hl_line_color = Color(0.714844, 0.714844, 0.714844, 1)
+theme_override_constants/draw_relationship_lines = 1
+theme_override_constants/draw_guides = 0
+
+[node name="Control2" type="Control" parent="V/H/LeftPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="V/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 1
+drag_to_rearrange_enabled = true
+
+[node name="[Welcome]" type="SubViewportContainer" parent="V/H/TabContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="V/H/TabContainer/[Welcome]"]
+handle_input_locally = false
+physics_object_picking = true
+size = Vector2i(644, 582)
+render_target_update_mode = 4
+
+[node name="Welcome" parent="V/H/TabContainer/[Welcome]/SubViewport" instance=ExtResource("3_k6vi7")]
+
+[node name="RightPanel" type="PanelContainer" parent="V/H"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+mouse_force_pass_scroll_events = false
+theme = ExtResource("1_sj6we")
+theme_override_styles/panel = SubResource("StyleBoxFlat_vhr6h")
+
+[node name="MarginContainer" type="MarginContainer" parent="V/H/RightPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="V/H/RightPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="V/H/RightPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="V/H/RightPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(30, 40)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_mekjn")
+theme_override_font_sizes/normal_font_size = 20
+text = "Inspector"
+scroll_active = false
+
+[node name="WelcomeScroll" parent="V/H/RightPanel/MarginContainer/VBoxContainer" instance=ExtResource("5_tcd47")]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="V/H/RightPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="index_pressed" from="V/MenuBar/File" to="." method="_on_file_index_pressed"]
+[connection signal="cell_selected" from="V/H/LeftPanel/MarginContainer/VBoxContainer/Tree" to="." method="show_inspectors"]
+[connection signal="active_tab_rearranged" from="V/H/TabContainer" to="." method="_on_tab_container_active_tab_rearranged"]
+[connection signal="tab_button_pressed" from="V/H/TabContainer" to="." method="_on_tab_container_tab_button_pressed"]
+[connection signal="tab_changed" from="V/H/TabContainer" to="." method="_on_tab_container_tab_changed"]

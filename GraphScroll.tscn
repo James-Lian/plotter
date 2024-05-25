@@ -1,0 +1,158 @@
+[gd_scene load_steps=10 format=3 uid="uid://bfw6fossqnofo"]
+
+[ext_resource type="Theme" uid="uid://de3cpifuxp4xd" path="res://Panel-theme.tres" id="1_ta5br"]
+[ext_resource type="Theme" uid="uid://4ilms8b1i68v" path="res://Headers.tres" id="2_8yma4"]
+[ext_resource type="Script" path="res://GraphScroll.gd" id="2_ylw54"]
+[ext_resource type="FontFile" uid="uid://c2xeh2sqkhkrv" path="res://Fonts/DroidSans-Bold.ttf" id="3_v1dve"]
+[ext_resource type="FontFile" uid="uid://c0tqq1uy6hdbg" path="res://Fonts/DroidSans.ttf" id="5_f53ok"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wuj6s"]
+bg_color = Color(0.258824, 0.290196, 0.352941, 1)
+border_width_left = 4
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.257813, 0.289063, 0.351563, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n254n"]
+bg_color = Color(0.337255, 0.364706, 0.427451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oak5n"]
+content_margin_left = 6.0
+bg_color = Color(0.210938, 0.238281, 0.289063, 1)
+border_width_left = 18
+border_color = Color(0.183594, 0.199219, 0.222656, 1)
+
+[sub_resource type="Theme" id="Theme_xbeye"]
+LineEdit/styles/normal = SubResource("StyleBoxFlat_oak5n")
+
+[node name="GraphScroll" type="ScrollContainer"]
+offset_right = 287.0
+offset_bottom = 372.0
+size_flags_vertical = 3
+mouse_force_pass_scroll_events = false
+theme = ExtResource("1_ta5br")
+theme_override_styles/panel = SubResource("StyleBoxFlat_wuj6s")
+script = ExtResource("2_ylw54")
+
+[node name="Row" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Separator0" type="Control" parent="Row"]
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="Row"]
+layout_mode = 2
+theme = ExtResource("2_8yma4")
+theme_override_fonts/normal_font = ExtResource("3_v1dve")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[center]Base Graph[/center]"
+fit_content = true
+
+[node name="Separator1" type="Control" parent="Row"]
+layout_mode = 2
+
+[node name="Column" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/Column"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_f53ok")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n254n")
+text = "Position"
+scroll_active = false
+selection_enabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Row/Column"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PositionX" type="SpinBox" parent="Row/Column/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = SubResource("Theme_xbeye")
+update_on_text_changed = true
+prefix = "x"
+select_all_on_focus = true
+
+[node name="PositionY" type="SpinBox" parent="Row/Column/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = SubResource("Theme_xbeye")
+update_on_text_changed = true
+prefix = "y"
+select_all_on_focus = true
+
+[node name="Column2" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/Column2"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_f53ok")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n254n")
+text = "Size"
+scroll_active = false
+selection_enabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Row/Column2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SizeX" type="SpinBox" parent="Row/Column2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = SubResource("Theme_xbeye")
+update_on_text_changed = true
+prefix = "x"
+select_all_on_focus = true
+
+[node name="SizeY" type="SpinBox" parent="Row/Column2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = SubResource("Theme_xbeye")
+update_on_text_changed = true
+prefix = "y"
+select_all_on_focus = true
+
+[node name="Column3" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/Column3"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_f53ok")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n254n")
+text = "Data"
+scroll_active = false
+selection_enabled = true
+
+[node name="Button" type="Button" parent="Row/Column3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Edit Data"

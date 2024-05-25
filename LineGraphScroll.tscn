@@ -1,0 +1,446 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqvw7c70ii8v7"]
+
+[ext_resource type="Theme" uid="uid://de3cpifuxp4xd" path="res://Panel-theme.tres" id="1_0w308"]
+[ext_resource type="Script" path="res://LineGraphScroll.gd" id="2_3vppu"]
+[ext_resource type="FontFile" uid="uid://c0tqq1uy6hdbg" path="res://Fonts/DroidSans.ttf" id="2_fahl3"]
+[ext_resource type="Theme" uid="uid://4ilms8b1i68v" path="res://Headers.tres" id="2_ijh5d"]
+[ext_resource type="FontFile" uid="uid://c2xeh2sqkhkrv" path="res://Fonts/DroidSans-Bold.ttf" id="3_7lipa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wuj6s"]
+bg_color = Color(0.258824, 0.290196, 0.352941, 1)
+border_width_left = 4
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.257813, 0.289063, 0.351563, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n254n"]
+bg_color = Color(0.337255, 0.364706, 0.427451, 1)
+
+[node name="LineGraphScroll" type="ScrollContainer"]
+offset_right = 313.0
+offset_bottom = 659.0
+size_flags_vertical = 3
+mouse_force_pass_scroll_events = false
+theme = ExtResource("1_0w308")
+theme_override_styles/panel = SubResource("StyleBoxFlat_wuj6s")
+script = ExtResource("2_3vppu")
+
+[node name="Row" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Separator0" type="Control" parent="Row"]
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="Row"]
+layout_mode = 2
+theme = ExtResource("2_ijh5d")
+theme_override_fonts/normal_font = ExtResource("3_7lipa")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[center]LineGraph[/center]"
+fit_content = true
+
+[node name="Separator1" type="Control" parent="Row"]
+layout_mode = 2
+
+[node name="Header" type="RichTextLabel" parent="Row"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme = ExtResource("2_ijh5d")
+theme_override_fonts/normal_font = ExtResource("3_7lipa")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n254n")
+bbcode_enabled = true
+text = "[center] Inner Graph Boundary [/center]"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="InnerGraphDraw" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/InnerGraphDraw"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_fahl3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n254n")
+text = "Draw"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="CheckBox" type="CheckBox" parent="Row/InnerGraphDraw"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "On"
+
+[node name="InnerGraphWeight" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/InnerGraphWeight"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_fahl3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n254n")
+text = "Weight
+"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="SpinBox" type="SpinBox" parent="Row/InnerGraphWeight"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_0w308")
+
+[node name="Separator2" type="Control" parent="Row"]
+layout_mode = 2
+
+[node name="Separator3" type="Control" parent="Row"]
+layout_mode = 2
+
+[node name="Header2" type="RichTextLabel" parent="Row"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme = ExtResource("2_ijh5d")
+theme_override_fonts/normal_font = ExtResource("3_7lipa")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n254n")
+bbcode_enabled = true
+text = "[center] Vertical Gridlines [/center]"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="VMajorGridlines" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="MajorContainer" type="VBoxContainer" parent="Row/VMajorGridlines"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 6
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/VMajorGridlines/MajorContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_7lipa")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n254n")
+text = "Major Gridlines"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="Separator" type="Control" parent="Row/VMajorGridlines/MajorContainer"]
+layout_mode = 2
+
+[node name="Weight" type="HBoxContainer" parent="Row/VMajorGridlines/MajorContainer"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/VMajorGridlines/MajorContainer/Weight"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_fahl3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n254n")
+text = "Weight
+"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="SpinBox" type="SpinBox" parent="Row/VMajorGridlines/MajorContainer/Weight"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_0w308")
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Row/VMajorGridlines/MajorContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_fahl3")
+text = "Colour"
+
+[node name="Separator4" type="Control" parent="Row"]
+layout_mode = 2
+
+[node name="VMinorGridlines" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="MinorContainer" type="VBoxContainer" parent="Row/VMinorGridlines"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 6
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/VMinorGridlines/MinorContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_7lipa")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n254n")
+text = "Minor Gridlines"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="Separator" type="Control" parent="Row/VMinorGridlines/MinorContainer"]
+layout_mode = 2
+
+[node name="Weight" type="HBoxContainer" parent="Row/VMinorGridlines/MinorContainer"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/VMinorGridlines/MinorContainer/Weight"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_fahl3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n254n")
+text = "Weight
+"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="SpinBox" type="SpinBox" parent="Row/VMinorGridlines/MinorContainer/Weight"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_0w308")
+
+[node name="Count" type="HBoxContainer" parent="Row/VMinorGridlines/MinorContainer"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/VMinorGridlines/MinorContainer/Count"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_fahl3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n254n")
+text = "Count"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="SpinBox" type="SpinBox" parent="Row/VMinorGridlines/MinorContainer/Count"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_0w308")
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Row/VMinorGridlines/MinorContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_fahl3")
+text = "Colour"
+
+[node name="CheckBox" type="CheckBox" parent="Row/VMinorGridlines"]
+layout_mode = 2
+text = "On"
+
+[node name="Separator5" type="Control" parent="Row"]
+layout_mode = 2
+
+[node name="Header3" type="RichTextLabel" parent="Row"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme = ExtResource("2_ijh5d")
+theme_override_fonts/normal_font = ExtResource("3_7lipa")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n254n")
+bbcode_enabled = true
+text = "[center] Horizontal Gridlines [/center]"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="HMajorGridlines" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="MajorContainer" type="VBoxContainer" parent="Row/HMajorGridlines"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 6
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/HMajorGridlines/MajorContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_7lipa")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n254n")
+text = "Major Gridlines"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="Separator" type="Control" parent="Row/HMajorGridlines/MajorContainer"]
+layout_mode = 2
+
+[node name="Weight" type="HBoxContainer" parent="Row/HMajorGridlines/MajorContainer"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/HMajorGridlines/MajorContainer/Weight"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_fahl3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n254n")
+text = "Weight
+"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="SpinBox" type="SpinBox" parent="Row/HMajorGridlines/MajorContainer/Weight"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_0w308")
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Row/HMajorGridlines/MajorContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_fahl3")
+text = "Colour"
+
+[node name="HMinorGridlines" type="HBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="MinorContainer" type="VBoxContainer" parent="Row/HMinorGridlines"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 6
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/HMinorGridlines/MinorContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_7lipa")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n254n")
+text = "Minor Gridlines"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="Separator" type="Control" parent="Row/HMinorGridlines/MinorContainer"]
+layout_mode = 2
+
+[node name="Weight" type="HBoxContainer" parent="Row/HMinorGridlines/MinorContainer"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/HMinorGridlines/MinorContainer/Weight"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_fahl3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n254n")
+text = "Weight
+"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="SpinBox" type="SpinBox" parent="Row/HMinorGridlines/MinorContainer/Weight"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_0w308")
+
+[node name="Count" type="HBoxContainer" parent="Row/HMinorGridlines/MinorContainer"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Row/HMinorGridlines/MinorContainer/Count"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_fahl3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n254n")
+text = "Count"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="SpinBox" type="SpinBox" parent="Row/HMinorGridlines/MinorContainer/Count"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_0w308")
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Row/HMinorGridlines/MinorContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_fahl3")
+text = "Colour"
+
+[node name="CheckBox" type="CheckBox" parent="Row/HMinorGridlines"]
+layout_mode = 2
+text = "On"
+
+[connection signal="toggled" from="Row/InnerGraphDraw/CheckBox" to="." method="_InnerGraphDraw_toggled"]
+[connection signal="value_changed" from="Row/InnerGraphWeight/SpinBox" to="." method="_InnerGraphWeight_changed"]
+[connection signal="value_changed" from="Row/VMajorGridlines/MajorContainer/Weight/SpinBox" to="." method="_vgridline_weight_value_changed"]
+[connection signal="color_changed" from="Row/VMajorGridlines/MajorContainer/ColorPickerButton" to="." method="_on_vgridline_color_changed"]
+[connection signal="value_changed" from="Row/VMinorGridlines/MinorContainer/Weight/SpinBox" to="." method="_on_v_minorgridlines_value_changed"]
+[connection signal="value_changed" from="Row/VMinorGridlines/MinorContainer/Count/SpinBox" to="." method="_on_v_minorgridlines_count_value_changed"]
+[connection signal="color_changed" from="Row/VMinorGridlines/MinorContainer/ColorPickerButton" to="." method="_on_v_minorgridline_changed"]
+[connection signal="toggled" from="Row/VMinorGridlines/CheckBox" to="." method="_on_v_minorgridlines_toggled"]
+[connection signal="value_changed" from="Row/HMajorGridlines/MajorContainer/Weight/SpinBox" to="." method="_on_hgridlineweight_value_changed"]
+[connection signal="color_changed" from="Row/HMajorGridlines/MajorContainer/ColorPickerButton" to="." method="_on_hgridline_color_changed"]
+[connection signal="value_changed" from="Row/HMinorGridlines/MinorContainer/Weight/SpinBox" to="." method="_on_h_minorgridlines_value_changed"]
+[connection signal="value_changed" from="Row/HMinorGridlines/MinorContainer/Count/SpinBox" to="." method="_on_h_minorgridlines_count_value_changed"]
+[connection signal="color_changed" from="Row/HMinorGridlines/MinorContainer/ColorPickerButton" to="." method="_on_h_minorgridlines_color_changed"]
+[connection signal="toggled" from="Row/HMinorGridlines/CheckBox" to="." method="_on_h_minorgridlines_toggled"]
